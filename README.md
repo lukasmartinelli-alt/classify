@@ -1,7 +1,8 @@
 # classilang
 A DSL for [classifications](https://en.wikipedia.org/wiki/Classification) of objects.
 This is targeted at classifications that require alot of constant and human entered data and not
-fancy algorithms.
+fancy algorithms. Given the input classification system the compiler will produce a classification function
+in `Python`, `JavaScript`, `Java` and `SQL`.
 
 > **Goal**: Map a complex object to a single value based on constraints
 

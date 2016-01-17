@@ -24,7 +24,7 @@ Operator | Description
 
 Classify films with regard to suitability for audiences.
 
-```go
+```javascript
 system movie_ratings_children {
     object {
       age: Integer
@@ -54,7 +54,7 @@ system movie_ratings_children {
 
 Classify people into three tax classes.
 
-```go
+```javascript
 const upper_threshold: 120000
 const lower_threshold:  50000
 
@@ -75,7 +75,7 @@ In our OpenStreetMap project [osm2vectortiles](github.com/osm2vectortiles/osm2ve
 we classify various OpenStreetMap tags into a `feature_class` to allow designers to easily
 style groups of values.
 
-```go
+```javascript
 const main_values {
     primary
     primary_link

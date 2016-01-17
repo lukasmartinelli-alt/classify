@@ -68,6 +68,20 @@ system tax_burden_income {
 }
 ```
 
+Generated code.
+
+```python
+def tax_burden_income(income):
+    upper_threshold = 120000
+    lower_threshold =  50000
+    if income < lower_threshold:
+        yield 20.3
+    if income < lower_threshold and income < upper_threshold>:
+        yield 20.3
+    if income > upper_threshold>:
+        yield 35.1
+```
+
 
 ### OpenStreetMap Tags
 

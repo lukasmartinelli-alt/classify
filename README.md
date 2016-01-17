@@ -7,34 +7,65 @@ fancy algorithms.
 
 ## Operators
 
-Operator | Description                                                            
+Operator | Description
 ---------|------------------------------------------------------------------------
-$        | References a existing field from `data` or a constant from `constants`                
-@>       | Value is contained in a list of values                                 
-+	       | Addition
--	       | Subtraction
-*	       | Multiplication
-/	       | Division (integer division truncates the result)
-%	       | Modulo (remainder)
-^	       | Exponentiation
+`$`      | References a existing field from `data` or a constant from `constants`
+`@>`     | Value is contained in a list of values
+`+`      | Addition
+`-`	     | Subtraction
+`*`	     | Multiplication
+`/`	     | Division (integer division truncates the result)
+`%`	     | Modulo (remainder)
+`^`	     | Exponentiation
 
 ## Examples
+
+### Motion Picture Rating
+
+Classify films with regard to suitability for audiences.
+
+```go
+system movie_ratings_children {
+    object {
+      age: Integer
+      country: String
+    }
+
+    $country == argentinia {
+        class ATP: $age > 0
+        class 13: $age >= 13
+        class 16: $age >= 16
+        class 18: $age >= 18
+        class "18, conditional display": $age >= 18
+    }
+
+    $country == australia {
+        class PG: $age > 0
+        class G: $age > 0
+        class MA15+: $age >= 15
+        class M: $age >= 15
+        class R18: $age >= 18
+        class X18+: $age >= 18
+    }
+}
+```
 
 ### Tax Classification
 
 Classify people into three tax classes.
 
-```yaml
-data:
-  - income
-constants:
-  upper_threshold: 120000
-  lower_threshold:  50000
-classify:
-  tax_rate:
-    20.3: $income < $lower_threshold
-    25.8: $income > $lower_threshold && $income < $upper_threshold
-    35.1: $income > $upper_threshold
+```go
+const upper_threshold: 120000
+const lower_threshold:  50000
+
+system tax_burden_income {
+    object {
+      income: Float
+    }
+    class 20.3: $income < $lower_thresholk
+    class 25.8: $income > $lower_threshold && $income < $upper_threshold
+    class 35.1: $income > $upper_threshold
+}
 ```
 
 
@@ -44,32 +75,36 @@ In our OpenStreetMap project [osm2vectortiles](github.com/osm2vectortiles/osm2ve
 we classify various OpenStreetMap tags into a `feature_class` to allow designers to easily
 style groups of values.
 
-```yaml
-data:
-  - key
-  - value
-constants:
-  main_values:
-    - primary
-    - primary_link
-    - trunk
-    - trunk_link
-    - secondary
-    - secondary_link
-    - tertiary
-    - tertiary_link
-  street_values:
-    - residential
-    - unclassified
-    - living_street
-    - road
-    - raceway
-classify:
-  feature_class:
-    driveway: $value == driveway
-    main:     $value <@ $main_values
-    street:   $value <@ $street_values
-  color:
-    orange:   $key == road || $key == way
-    blue:     $key == water <@ $main_values
+```go
+const main_values {
+    primary
+    primary_link
+    trunk
+    trunk_link
+    secondary
+    secondary_link
+    tertiary
+    tertiary_link
+}
+
+const street_values {
+    residential
+    unclassified
+    living_street
+    road
+    raceway
+}
+
+system osm_feature_class {
+    object osm_tag {
+      key: String
+      value: String
+    }
+
+    $key == road {
+        class driveway: $value == driveway
+        class main:     $value <@ $main_values
+        class street:   $value <@ $street_values
+    }
+}
 ```

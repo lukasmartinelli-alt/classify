@@ -1,5 +1,4 @@
-# classify
-
+# classify [![Build Status](https://travis-ci.org/lukasmartinelli/classify.svg?branch=master)](https://travis-ci.org/lukasmartinelli/classify) [![MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](https://tldrlegal.com/license/mit-license)
 
 <img align="right" alt="Classification of many values" src="classification.png" />
 
@@ -18,7 +17,12 @@ You need to have Python installed on your system.
 git clone https://github.com/lukasmartinelli/classify.git
 cd classify
 pip install -r requirements.txt
-./classify.py <yaml-definition>
+
+# generate sql code
+./classify.py sql <yaml-definition>
+
+# generate python code
+./classify.py python <yaml-definition>
 ```
 
 ## Example

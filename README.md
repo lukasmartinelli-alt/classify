@@ -2,16 +2,16 @@
 
 <img align="right" alt="Classification of many values" src="classification.png" />
 
-A YAML format for [classification](https://en.wikipedia.org/wiki/Classification) of scalar values.
-A Python compiler will produce a classification function in `Python` and `SQL`
+A YAML format for [classification](https://en.wikipedia.org/wiki/Classification) of single values.
+The `classify.py` Python program will produce a classification function for various language targets
 for the given YAML format.
 
-This approach is for the use case in [osm2vectortiles](github.com/osm2vectortiles/osm2vectortiles)
-where many values need to be reduced to a single value.
+This approach is used in [osm2vectortiles](github.com/osm2vectortiles/osm2vectortiles)
+where we categorize OpenStreetMap values into different feature classes and icons.
 
 ## Get started
 
-You need to have Python installed on your system.
+You need to have Python 2 or Python 3 installed on your system.
 
 ```
 git clone https://github.com/lukasmartinelli/classify.git
@@ -36,7 +36,7 @@ For each class you define a list of values that you want to map to your class.
 
 ```yml
 system:
-  name: OSM Feature Class
+  name: feature_class
   classes:
     street:
     - residential
@@ -71,4 +71,20 @@ CREATE OR REPLACE FUNCTION classify_osm_feature_class(type VARCHAR)
   END;
 END;
 $$ LANGUAGE plpgsql IMMUTABLE;
+```
+
+## Structure
+
+The `system` defines a classification system for values. You can give a system
+a `name`. The name of your `system` will appear in the generated code.
+
+A classification system has many `classes`. Each class is a key (the class name) and
+values (the values that are matched to the class). Only text values are supported.
+
+```yml
+system:
+  name: <name-classification-system>
+  classes:
+    <class-name>:
+    - <value-to-match>
 ```

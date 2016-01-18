@@ -1,0 +1,17 @@
+system:
+  name: feature_class
+  classes:
+    street:
+    - residential
+    - unclassified
+    - living_street
+    - road
+    - raceway
+    main:
+    - primary
+    - primary_link
+    - trunk
+    - trunk_link
+    - secondary
+    - secondary_link
+    - tertiary

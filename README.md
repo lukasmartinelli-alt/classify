@@ -1,13 +1,14 @@
 # classify
 
+
+<img align="right" alt="Classification of many values" src="classification.png" />
+
 A YAML format for [classification](https://en.wikipedia.org/wiki/Classification) of scalar values.
 A Python compiler will produce a classification function in `Python` and `SQL`
 for the given YAML format.
 
 This approach is for the use case in [osm2vectortiles](github.com/osm2vectortiles/osm2vectortiles)
 where many values need to be reduced to a single value.
-
-![Classification of many values](classification.png)
 
 ## Example
 

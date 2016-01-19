@@ -1,5 +1,4 @@
-# classify [![Build Status](https://travis-ci.org/lukasmartinelli/classify.svg?branch=master)](https://travis-ci.org/lukasmartinelli/classify) [![MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](https://tldrlegal.com/license/mit-license)
-
+# classify [![Build Status](https://travis-ci.org/lukasmartinelli/classify.svg?branch=master)](https://travis-ci.org/lukasmartinelli/classify) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/lukasmartinelli/classify/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/lukasmartinelli/classify/?branch=master) [![MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](https://tldrlegal.com/license/mit-license)
 <img align="right" alt="Classification of many values" src="classification.png" />
 
 A YAML format for [classification](https://en.wikipedia.org/wiki/Classification) of single values.
